@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>San Valentín 💛</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 40px;
+        }
+
+        h1 {
+            color: #d10068;
+        }
+
+        video {
+            width: 250px;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+
+        button {
+            font-size: 20px;
+            padding: 12px 25px;
+            margin: 10px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        #si {
+            background-color: #ff4d6d;
+            color: white;
+        }
+
+        #no {
+            background-color: #444;
+            color: white;
+        }
+
+        #contador {
+            margin-top: 10px;
+            font-size: 18px;
+            color: #6b003a;
+        }
+
+        #mensajeNo {
+            margin-top: 15px;
+            font-size: 20px;
+            color: #8a003f;
+            min-height: 40px;
+        }
+
+        #mensajeFinal {
+            font-size: 26px;
+            color: #b3005e;
+            margin-top: 25px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>¿Quieres ser mi San Valentín? 💘</h1>
+
+    <video autoplay loop muted>
+        <source src="minion.mp4" type="video/mp4">
+        Tu navegador no soporta videos 😢
+    </video>
+
+    <div>
+        <button id="si" onclick="aceptar()">Sí 💖</button>
+        <button id="no" onclick="rechazar()">No 😅</button>
+    </div>
+
+    <div id="contador">
+        💔 Me has dicho que no: <b>0</b> veces
+    </div>
+
+    <div id="mensajeNo"></div>
+
+    <div id="mensajeFinal">
+        💛 Sabía que dirías que sí 🥹  
+        <br>Gracias por elegirme, te amo 💘
+    </div>
+
+    <script>
+        let tamañoSi = 20;
+        let vecesNo = 0;
+
+        const mensajes = [
+            "¿Estás segura? 🥺",
+            "Piénsalo bien… solo una vez más 😏",
+            "El Minion cree en nosotros 🐥💛",
+            "Eso dolió un poquito 💔",
+            "Mira qué bonito crece el botón Sí 😌",
+            "No es no… pero inténtalo otra vez 😇",
+            "Yo aquí sigo, paciente 🫶",
+            "¿Y si dices que sí solo por probar? 👀",
+            "Este botón no se va a rendir 😤",
+            "La ciencia dice que ya casi dices que sí 🧠",
+            "Ok… esto ya es personal 😈",
+            "El amor es perseverante 💘",
+            "Spoiler: vas a decir que sí 😌",
+            "El Minion ya apostó por nosotros 🐥",
+            "Última oportunidad… mentira 😅",
+            "Esto ya es destino 💫",
+            "Ya te aburriste, ¿verdad? 😏"
+        ];
+
+        function rechazar() {
+            vecesNo++;
+            document.getElementById("contador").innerHTML =
+                "💔 Me has dicho que no: <b>" + vecesNo + "</b> veces";
+
+            const mensajeActual = mensajes[vecesNo % mensajes.length];
+            document.getElementById("mensajeNo").innerText = mensajeActual;
+
+            tamañoSi += 10;
+            document.getElementById("si").style.fontSize = tamañoSi + "px";
+
+            if (tamañoSi >= 90) {
+                document.getElementById("no").style.display = "none";
+                document.getElementById("mensajeNo").innerText =
+                    "😌 Ya no hay botón No… solo amor";
+            }
+        }
+
+        function aceptar() {
+            document.getElementById("mensajeFinal").style.display = "block";
+            document.getElementById("si").style.display = "none";
+            document.getElementById("no").style.display = "none";
+            document.getElementById("contador").style.display = "none";
+            document.getElementById("mensajeNo").style.display = "none";
+        }
+    </script>
+
+</body>
+</html>
